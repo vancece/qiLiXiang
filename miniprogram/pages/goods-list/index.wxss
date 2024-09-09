@@ -1,0 +1,106 @@
+/* pages/goods-list/index.wxss */
+.title {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 0 20rpx;
+}
+
+.title image {
+  height: 46rpx;
+  width: 46rpx;
+}
+
+.staple-food {
+  display: flex;
+  margin-bottom: 60rpx;
+  overflow: auto;
+}
+
+.staple-food-item {
+  margin: 20rpx 10rpx;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f3f0ee;
+  box-shadow: 6rpx 6rpx 6rpx #dfdfdf, -6rpx -6rpx 6rpx #dfdfdf;
+  border-radius: 6rpx;
+  padding: 8rpx;
+}
+
+.staple-food-item.selected, .side-dish-item.selected {
+  box-shadow: 6rpx 6rpx 6rpx #58b566, -6rpx -6rpx 6rpx #58b566, 6rpx -6rpx 6rpx #58b566, -6rpx 6rpx 6rpx #58b566;
+}
+
+.staple-food-item image {
+  border-radius: 6rpx;
+  width: 300rpx;
+  height: 300rpx;
+}
+
+.prize {
+  padding: 6rpx 6rpx 0;
+  text-align: right;
+  color: orangered
+}
+
+.side-dish {
+  padding: 20rpx 12rpx;
+  display: flex;
+  gap: 12rpx;
+  overflow: auto;
+}
+
+.side-dish image {
+  height: 200rpx;
+  width: 200rpx;
+}
+
+.side-dish-item {
+  border-radius: 8px;
+  padding: 16rpx;
+  box-shadow: 6rpx 6rpx 6rpx #dfdfdf, -6rpx -6rpx 6rpx #dfdfdf;
+}
+
+.bottom-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.bottom-info {
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  color: grey;
+  font-size: 0.5em;
+}
+
+.bottom-content .total-prize {
+  padding: 0 30rpx;
+}
+
+.bottom-operate {
+  border-top: 1px solid #dfdfdf;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+}
+
+.submit-button {
+  width: 350rpx;
+  color: white;
+  background: #22b85c;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit-button.disabled {
+  background: grey;
+  /* 注意，这里设置了当按钮置灰的时候，不可点击 */
+  pointer-events: none;
+}

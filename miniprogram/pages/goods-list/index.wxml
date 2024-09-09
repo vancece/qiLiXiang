@@ -1,0 +1,55 @@
+<!--pages/goods-list/index.wxml-->
+<view>
+  <view class="title">
+    <image src='/asset/pancake.png'></image>
+    <text class="title">请选择主食</text>
+  </view>
+
+  <!-- 主食展示 -->
+  <view class="staple-food">
+    <view wx:for="{{stapleFood}}" wx:key="_id">
+      <view bindtap="onSelectStapleFood" data-data="{{item}}" class="staple-food-item {{selectedStapleFoodName === item.name ? 'selected' : ''}}">
+        <image src="{{item.imageUrl}}"></image>
+        <view class="prize">{{item.prize}}￥</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 选择配菜 -->
+  <view class="title">
+    <image src='/asset/sideDish.png'></image>
+    请选择配菜
+  </view>
+
+  <!-- 配菜展示 -->
+  <view class="side-dish">
+    <view wx:for="{{sideDish}}" wx:key="_id">
+      <!-- 使得class动态绑定支持 includes 语法 https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/ -->
+      <wxs module="tool">
+        var includes = function (array, text) {
+          return array.indexOf(text) !== -1
+        }
+        module.exports.includes = includes;
+      </wxs>
+      <view class="side-dish-item {{tool.includes(selectedSideDishName, item.name) ? 'selected' : ''}}" bindtap="onSelectedSideDish" data-data="{{item}}">
+        <image src="{{item.imageUrl}}"></image>
+        <view class="prize">{{item.prize}}￥</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部菜单 -->
+  <view class="bottom-content">
+    <!-- 显示选中的主食、配菜 -->
+    <view class='bottom-info'>
+      <view wx:if="{{!!selectedStapleFoodName}}">主食：{{selectedStapleFoodName}}</view>
+      <view wx:if="{{selectedSideDishName.length !== 0}}">配菜：{{selectedSideDishName}}</view>
+    </view>
+
+    <!-- 底部操作按钮栏 -->
+    <view class="bottom-operate">
+      <view class="total-prize">当前价格<text class="prize">{{totalPrize}}￥</text></view>
+      <view class="submit-button {{!selectedStapleFoodName ? 'disabled' : ''}}" bind:tap="onSubmit">下单</view>
+    </view>
+  </view>
+</view>
